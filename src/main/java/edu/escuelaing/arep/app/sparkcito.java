@@ -8,7 +8,7 @@ import java.util.*;
 public class sparkcito {
 	
 	
-	private static Map<String, String> mapp = new HashMap<>();
+	private static Map<String, String> mapp = new HashMap<String, String>();
 	
 	public static String getMap(String map) {
 		return mapp.get(map);
