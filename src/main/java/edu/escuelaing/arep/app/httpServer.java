@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 public class httpServer {
 	private String route = "src/main/resources";
 	private PrintWriter out;
+	private DBConnection dbc;
 	
 	public httpServer() {
 		super();
@@ -28,7 +29,7 @@ public class httpServer {
 	
 	
 	public void start() throws IOException {
-		
+		dbc = new DBConnection();
 		int p = getPort();
 		   
 		   boolean working = true;
@@ -78,9 +79,7 @@ public class httpServer {
 		while((l = b.readLine()) != null) {
 			//Procesar solicitud
 			if(l.contains("GET")){
-				System.out.println(file);
 				file = l.split(" ")[1];
-				System.out.println(file);
 				if(file.startsWith("/Apps")) {
 					String app = file.substring(5);
 					System.out.println("NNuevo file"+file);
@@ -181,12 +180,12 @@ public class httpServer {
 		private String invoke(String path) {
 			String line = getHeader("html");
 			String file = sparkcito.getMap(path);
-			System.out.println(path);
+			ArrayList<String[]> query = dbc.getGrupoA();
+			//System.out.println(query.get(0));
 			if(path.equals("/grupoA") || path.equals("/grupoA?")) {
-				System.out.println("invocanding");
 				file = "";
-				for (int i = 0; i < 5; i++) {
-					file = file + "Row "+i+"\r\n";
+				for (String[] info : query) {
+					file = file +"Equipo: "+info[0]+" Partidos Jugados: "+info[1]+" Partidos Ganados: "+info[2]+" Partidos Empatados: "+info[4]+" Puntos: "+info[5]+" \n";
 				}
 				return line + file;
 				
