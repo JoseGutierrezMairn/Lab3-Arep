@@ -67,7 +67,7 @@ public class httpServer {
 		if (System.getenv("PORT") != null) {
 			return Integer.parseInt(System.getenv("PORT"));
 		}
-		return 35001; //returns default port if heroku-port isn't set(i.e. on localhost)
+		return 35002; //returns default port if heroku-port isn't set(i.e. on localhost)
 	}
 	
 	
@@ -82,7 +82,7 @@ public class httpServer {
 				file = l.split(" ")[1];
 				if(file.startsWith("/Apps")) {
 					String app = file.substring(5);
-					System.out.println("NNuevo file"+file);
+					//invoke(app);
 					out.println(invoke(app));
 				}else {
 					if(file.equals("/")) {
@@ -185,7 +185,9 @@ public class httpServer {
 			if(path.equals("/grupoA") || path.equals("/grupoA?")) {
 				file = "";
 				for (String[] info : query) {
-					file = file +"Equipo: "+info[0]+" Partidos Jugados: "+info[1]+" Partidos Ganados: "+info[2]+" Partidos Empatados: "+info[4]+" Puntos: "+info[5]+" \n";
+					
+					file = file +"Equipo: "+info[0]+" Partidos Jugados: "+info[1]+" Partidos Ganados: "+info[2]+" Partidos Empatados: "+info[3]+" Puntos: "+info[4]+"\r\n";
+
 				}
 				return line + file;
 				

@@ -32,7 +32,7 @@ public class DBConnection {
 
 	public void createTable() {
 		
-		String CREATE_TABLE="CREATE TABLE grupoA ("
+		String CREATE_TABLE="CREATE TABLE grupoa("
 				+ "EQUIPO VARCHAR(20) NOT NULL,"
 				+ "PJ VARCHAR(20) NOT NULL,"
 				+ "PG VARCHAR(20) NOT NULL,"
@@ -54,7 +54,7 @@ public class DBConnection {
 	public ArrayList<String[]> getGrupoA(){
 		
 		ArrayList<String[]> answ = new ArrayList<String[]>();
-		String query = "SELECT * FROM partidos;";
+		String query = "SELECT * FROM grupoa;";
 		try {
 			Statement  s = c.createStatement();
 			ResultSet rs = s.executeQuery(query);
