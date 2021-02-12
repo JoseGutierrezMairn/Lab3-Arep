@@ -29,6 +29,23 @@ public class DBConnection {
 	/**
 	 * Permite crear la tabla partidos.
 	 */
+
+	public void createTable() {
+		
+		String CREATE_TABLE="CREATE TABLE grupoa("
+				+ "EQUIPO VARCHAR(20) NOT NULL,"
+				+ "PJ VARCHAR(20) NOT NULL,"
+				+ "PG VARCHAR(20) NOT NULL,"
+				+ "PE VARCHAR(20) NOT NULL,"
+				+ "PTS INTEGER NOT NULL,";
+		
+        try {
+            Statement statement = c.createStatement();
+            statement.execute(CREATE_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	}
 	
 	/**
 	 * Permite obtener la informacion de la tabla.
@@ -37,9 +54,8 @@ public class DBConnection {
 	public ArrayList<String[]> getGrupoA(){
 		
 		ArrayList<String[]> answ = new ArrayList<String[]>();
-		String query = "SELECT * FROM grupoA;";
+		String query = "SELECT * FROM grupoa;";
 		try {
-			System.out.println("Empezandp");
 			Statement  s = c.createStatement();
 			ResultSet rs = s.executeQuery(query);
 			while(rs.next()) {
@@ -50,30 +66,6 @@ public class DBConnection {
 				String pts = rs.getString("PTS");
 				String[] column = {equipo, pj, pg, pe, pts};
 				System.out.println(column);
-				answ.add(column);
-				
-				System.out.println(answ);
-			}
-		} catch (SQLException e) {
-            e.printStackTrace();
-        }
-		return answ;
-	}
-	
-	
-public ArrayList<String[]> getPartidos(){
-		
-		ArrayList<String[]> answ = new ArrayList<String[]>();
-		String query = "SELECT * FROM partidosGrupoA;";
-		try {
-			Statement  s = c.createStatement();
-			ResultSet rs = s.executeQuery(query);
-			while(rs.next()) {
-				String e1 = rs.getString("EQUIPO1");
-				String e2 = rs.getString("EQUIPO2");
-				String m = rs.getString("MARCADOR");
-				String f = rs.getString("FECHA");
-				String[] column = {e1, e2, m, f};
 				answ.add(column);
 			}
 		} catch (SQLException e) {
