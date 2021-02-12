@@ -37,7 +37,7 @@ public class DBConnection {
 	public ArrayList<String[]> getGrupoA(){
 		
 		ArrayList<String[]> answ = new ArrayList<String[]>();
-		String query = "SELECT * FROM grupoa;";
+		String query = "SELECT * FROM grupoA;";
 		try {
 			Statement  s = c.createStatement();
 			ResultSet rs = s.executeQuery(query);
@@ -48,7 +48,9 @@ public class DBConnection {
 				String pe = rs.getString("PE");
 				String pts = rs.getString("PTS");
 				String[] column = {equipo, pj, pg, pe, pts};
+				System.out.println(column);
 				answ.add(column);
+				System.out.println(answ);
 			}
 		} catch (SQLException e) {
             e.printStackTrace();
