@@ -39,6 +39,7 @@ public class DBConnection {
 		ArrayList<String[]> answ = new ArrayList<String[]>();
 		String query = "SELECT * FROM grupoA;";
 		try {
+			System.out.println("Empezandp");
 			Statement  s = c.createStatement();
 			ResultSet rs = s.executeQuery(query);
 			while(rs.next()) {
@@ -50,6 +51,7 @@ public class DBConnection {
 				String[] column = {equipo, pj, pg, pe, pts};
 				System.out.println(column);
 				answ.add(column);
+				
 				System.out.println(answ);
 			}
 		} catch (SQLException e) {
