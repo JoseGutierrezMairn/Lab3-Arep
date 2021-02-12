@@ -186,7 +186,7 @@ public class httpServer {
 			if(path.equals("/grupoA") || path.equals("/grupoA?")) {
 				System.out.println("Aqui mijo");
 				ArrayList<String[]> query = dbc.getGrupoA();
-				
+				System.out.println(query);
 				for (String[] info : query) {
 					
 					file = file +"Equipo: "+info[0]+" Partidos Jugados: "+info[1]+" Partidos Ganados: "+info[2]+" Partidos Empatados: "+info[3]+" Puntos: "+info[4]+" \n";
