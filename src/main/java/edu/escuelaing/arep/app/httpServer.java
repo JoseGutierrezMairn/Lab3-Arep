@@ -81,6 +81,7 @@ public class httpServer {
 			if(l.contains("GET")){
 				file = l.split(" ")[1];
 				if(file.startsWith("/Apps")) {
+					
 					String app = file.substring(5);
 					//invoke(app);
 					out.println(invoke(app));
@@ -180,18 +181,31 @@ public class httpServer {
 		private String invoke(String path) {
 			String line = getHeader("html");
 			String file = sparkcito.getMap(path);
-			ArrayList<String[]> query = dbc.getGrupoA();
+			file = "";
 			//System.out.println(query.get(0));
 			if(path.equals("/grupoA") || path.equals("/grupoA?")) {
-				file = "";
+				System.out.println("Aqui mijo");
+				ArrayList<String[]> query = dbc.getGrupoA();
+				
 				for (String[] info : query) {
 					
-					file = file +"Equipo: "+info[0]+" Partidos Jugados: "+info[1]+" Partidos Ganados: "+info[2]+" Partidos Empatados: "+info[3]+" Puntos: "+info[4]+"\r\n";
+					file = file +"Equipo: "+info[0]+" Partidos Jugados: "+info[1]+" Partidos Ganados: "+info[2]+" Partidos Empatados: "+info[3]+" Puntos: "+info[4]+" \n";
 
 				}
 				return line + file;
 				
-			}if(file != null) {
+			}else if(path.equals("/partidos") || path.equals("/partidos?")) {
+				System.out.println("Aqui papi");
+				ArrayList<String[]> query = dbc.getPartidos();
+				
+				for (String[] info : query) {
+					
+					file = file +info[0]+" VS "+info[1]+"    Marcador Final: "+info[2]+"    Fecha: "+info[3]+"\r\n";
+
+				}
+				return line + file;
+			}
+			if(file != null) {
 				return line + file;
 			}
 					
