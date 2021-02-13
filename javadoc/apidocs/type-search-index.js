@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"edu.escuelaing.arep.app","l":"App"},{"p":"edu.escuelaing.arep.app","l":"DBConnection"},{"p":"edu.escuelaing.arep.app","l":"httpServer"},{"p":"edu.escuelaing.arep.app","l":"sparkcito"}]

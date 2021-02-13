@@ -6,7 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+/***
+ *Es la encargada de realizar todas las operaciones que tengan que ver con la base de datos
+ *@author Jose Gutierrez
+ *
+ */
 public class DBConnection {
 	private static String uri = "jdbc:postgresql://ec2-3-211-245-154.compute-1.amazonaws.com:5432/d1s8lu3t47f6cm?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
 	private static String user = "lyydybmfpdsoyf";
@@ -27,12 +31,8 @@ public class DBConnection {
         }
 	}
 	/**
-	 * Permite crear la tabla partidos.
-	 */
-	
-	/**
-	 * Permite obtener la informacion de la tabla.
-	 * @return retorna un arreglo con los datos que contiene la base de datos.
+	 * Realiza la consulta del grupo A
+	 * @return retorna un arreglo con la informacion del grupo A
 	 */
 	public ArrayList<String[]> getGrupoA(){
 		
@@ -59,6 +59,10 @@ public class DBConnection {
 	}
 	
 	
+/***
+ * Realiza la consulta de los partidos del grupo A	
+ * @return Un arreglo con la informacion de los partidos jugados en el grupo A
+ */
 public ArrayList<String[]> getPartidos(){
 		
 		ArrayList<String[]> answ = new ArrayList<String[]>();

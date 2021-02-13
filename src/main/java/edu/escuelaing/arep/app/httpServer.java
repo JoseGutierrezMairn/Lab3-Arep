@@ -9,15 +9,27 @@ import java.util.*;
 
 import javax.imageio.ImageIO;
 
+/***
+ * Gestiona y recibe todas las peticiones de los usuarios y monta el servidor para tener el servicio listo para los usuarios
+ * @author Jose Gutierrez
+ *
+ */
 public class httpServer {
 	private String route = "src/main/resources";
 	private PrintWriter out;
 	private DBConnection dbc;
 	
+	/***
+	 * Constructor de la clase
+	 */
 	public httpServer() {
 		super();
 	}
 	
+	/***
+	 * Metodo principal de la clase, incializa el servidor
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		httpServer server = new httpServer();
 		try {
@@ -27,7 +39,9 @@ public class httpServer {
 		}
 	}
 	
-	
+	/***
+	 * @throws IOException
+	 */
 	public void start() throws IOException {
 		dbc = new DBConnection();
 		int p = getPort();
@@ -49,12 +63,9 @@ public class httpServer {
 			       System.err.println("Accept failed.");
 			       System.exit(1);
 			   }
-			  // PrintWriter out = new PrintWriter(
-                //       clientSocket.getOutputStream(), true)
-			    //out.println(outputLine);
 			    processRequest(clientSocket);
 			    out.close(); 
-			   // in.close(); 
+
 			    clientSocket.close();
 			    serverSocket.close(); 
 		   }
@@ -63,6 +74,10 @@ public class httpServer {
 		  
 	}
 	
+	/***
+	 * define el puerto en el que se va a correr el servicio
+	 * @return devuelve un entero que indica el numero del puerto en el que se va a correr la aplicacion
+	 */
 	private int getPort() {
 		if (System.getenv("PORT") != null) {
 			return Integer.parseInt(System.getenv("PORT"));
@@ -70,7 +85,11 @@ public class httpServer {
 		return 35002; //returns default port if heroku-port isn't set(i.e. on localhost)
 	}
 	
-	
+	/***
+	 * procesa una solicitud realizada por el usuario
+	 * @param clientSocket El Socket del cliente
+	 * @throws IOException
+	 */
 	private void processRequest(Socket clientSocket) throws IOException {
 		out = new PrintWriter(clientSocket.getOutputStream(), true);
 		BufferedReader b = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -93,7 +112,7 @@ public class httpServer {
 					getResourse(file, clientSocket);
 				}
 			}
-			//Si no está listo
+			//Si no esta listo
 			if(!b.ready()) {
 				break;
 			}
@@ -101,6 +120,12 @@ public class httpServer {
 		b.close();
 	}
 		
+		/***
+		 * Consigue el recurso solicitado
+		 * @param file El path del recurso solicitado
+		 * @param clientSocket Socket del cliente
+		 * @throws IOException
+		 */
 		private void getResourse(String file, Socket clientSocket) throws IOException {
 			
 			String line;
@@ -115,6 +140,11 @@ public class httpServer {
 				getImage(file, clientSocket.getOutputStream());
 			}
 		}
+		/***
+		 * Define el tipo de archivo 
+		 * @param type El archivo del cual se quiere saber que tipo de archivo es
+		 * @return answ Entero si es un 1 indica que es js, 0 para html
+		 */
 		private int getType(String type) {
 			// TODO Auto-generated method stub
 			int answ = 2;
@@ -128,7 +158,11 @@ public class httpServer {
 			return answ;
 		}
 		
-		
+		/***
+		 * Encuentra la imagen solicitada
+		 * @param type indica el tipo de imagen 
+		 * @param outClienttype 
+		 */
 		private void getImage(String type, OutputStream outClient) {
 			
 			String path = route + type;
@@ -150,6 +184,12 @@ public class httpServer {
 			
 		}
 		
+		/***
+		 * Obtiene y devuelve el archivo que se busca abrir
+		 * @param routee ruta del archivo
+		 * @param tipo Inidica el tipo de archivo
+		 * @return l string que indica el archivo que se esta buscando
+		 */
 		private String getFile(String routee, String tipo) {
 			String l = getHeader(tipo);
 			String path = this.route + routee;
@@ -171,13 +211,23 @@ public class httpServer {
 			return l;
 		}
 		
+		/***
+		 * Muestra error en la aplicacion web
+		 * @param error error que se muestra
+		 * @return line	El error que se va a mostrar
+		 */
 		private String errorResponse(String error) {
 	        String line = "HTTP/1.1 404 Not Found \r\nContent-Type: text/html \r\n\r\n <!DOCTYPE html> <html>"
 	                + "<head><title>404</title></head>" + "<body> <h1>404 Not Found " + error
 	                + "</h1></body></html>";
 	        return line;
 		}
-
+		
+		/***
+		 * Se encarga de mostrar el contenido que el usuario esta buscando
+		 * @param path Direccion de lo que busca el usuario
+		 * @return String String que describe el resutlado de la busqueda
+		 */
 		private String invoke(String path) {
 			String line = getHeader("html");
 			String file = sparkcito.getMap(path);

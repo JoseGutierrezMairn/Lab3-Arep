@@ -31,8 +31,8 @@ seguir el siguiente link:
 [Rusia 2018 - Jose Gutierrez Marin](https://powerful-stream-65068.herokuapp.com/)  
 
 # CircleCI  
+[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/JoseGutierrezMairn/Lab3-Arep)  
 
-[![CircleCI](https://app.circleci.com/pipelines/github/JoseGutierrezMairn/Lab3-Arep)  
 
 # Desarrollo  
 Construido con:
