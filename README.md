@@ -16,7 +16,7 @@ Para descargar el proyecto realizaremos los siguientes pasos desde el **Simbolo 
 2. Escribimos el siguiente comando para realizar la descarga:  
 `git clone https://github.com/JoseGutierrezMairn/AREP-Lab01.git`
 3. Esperamos a que el simbolo de sistema nos diga que ya se realizó la descarga  
-![Download completed](https://github.com/JoseGutierrezMairn/Lab3-Arep/blob/master/img/downloadingrepo.PNG?raw=true)
+![Download completed](https://github.com/JoseGutierrezMairn/Lab3-Arep/blob/master/img/downloadingRepo.PNG?raw=true)
 4. El proyecto ya se encuentra en nuestros computadores y está listo para ser editado o probado.  
   
 # Documentación
@@ -27,9 +27,12 @@ O también se puede consultar el javadoc en la carpeta **javadoc** del repositor
 # Heroku  
 Para probar el programa desplegado en heroku  
 seguir el siguiente link:  
-[Calculadora - Jose Gutierrez Marin](https://pure-woodland-27738.herokuapp.com/calculadora)
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://powerful-stream-65068.herokuapp.com/)
-# CircleCI
+[Rusia 2018- Jose Gutierrez Marin](https://powerful-stream-65068.herokuapp.com/)  
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://powerful-stream-65068.herokuapp.com/)  
+
+# CircleCI  
+
 [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/JoseGutierrezMairn/AREP-HEROKU-LAB02)  
 
 # Desarrollo  
