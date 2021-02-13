@@ -27,13 +27,12 @@ O también se puede consultar el javadoc en la carpeta **javadoc** del repositor
 # Heroku  
 Para probar el programa desplegado en heroku  
 seguir el siguiente link:  
-[Rusia 2018- Jose Gutierrez Marin](https://powerful-stream-65068.herokuapp.com/)  
-
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://powerful-stream-65068.herokuapp.com/)  
+[Rusia 2018 - Jose Gutierrez Marin](https://powerful-stream-65068.herokuapp.com/)  
 
 # CircleCI  
 
-[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/JoseGutierrezMairn/AREP-HEROKU-LAB02)  
+[![CircleCI](https://app.circleci.com/pipelines/github/JoseGutierrezMairn/Lab3-Arep)  
 
 # Desarrollo  
 Construido con:
